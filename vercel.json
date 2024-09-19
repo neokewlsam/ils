@@ -2,11 +2,9 @@
   "version": 2,
   "builds": [
     {
-      "src": "client/package.json",
+      "src": "package.json",
       "use": "@vercel/static-build",
-      "config": { 
-        "distDir": "build"
-      }
+      "config": { "distDir": "client/build" }
     },
     {
       "src": "server/server.js",
@@ -16,12 +14,9 @@
   "routes": [
     { "src": "/subjects", "dest": "/server/server.js" },
     { "src": "/subtopics/(.*)", "dest": "/server/server.js" },
-    { "src": "/explain", "methods": ["POST"], "dest": "/server/server.js" },
-    { "src": "/question", "methods": ["POST"], "dest": "/server/server.js" },
+    { "src": "/explain", "dest": "/server/server.js" },
+    { "src": "/question", "dest": "/server/server.js" },
     { "src": "/static/(.*)", "dest": "/client/build/static/$1" },
-    { "src": "/favicon.ico", "dest": "/client/build/favicon.ico" },
-    { "src": "/manifest.json", "dest": "/client/build/manifest.json" },
-    { "src": "/logo(.*).png", "dest": "/client/build/logo$1.png" },
     { "handle": "filesystem" },
     { "src": "/(.*)", "dest": "/client/build/index.html" }
   ]
