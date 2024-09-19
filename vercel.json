@@ -2,22 +2,22 @@
   "version": 2,
   "builds": [
     {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": { "distDir": "client/build" }
+      "src": "client/package.json",
+      "use": "@vercel/node"
     },
     {
-      "src": "server/server.js",
+      "src": "client/api/index.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
-    { "src": "/subjects", "dest": "/server/server.js" },
-    { "src": "/subtopics/(.*)", "dest": "/server/server.js" },
-    { "src": "/explain", "dest": "/server/server.js" },
-    { "src": "/question", "dest": "/server/server.js" },
-    { "src": "/static/(.*)", "dest": "/client/build/static/$1" },
-    { "handle": "filesystem" },
-    { "src": "/(.*)", "dest": "/client/build/index.html" }
+    {
+      "src": "/api/(.*)",
+      "dest": "client/api/index.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "client/$1"
+    }
   ]
 }
