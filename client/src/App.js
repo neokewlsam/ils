@@ -27,7 +27,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import InfoIcon from '@mui/icons-material/Info';
 import debounce from 'lodash.debounce';
 
-const API_URL = process.env.REACT_APP_API_URL || '';
+const API_URL = 'http://localhost:3001';
 
 const theme = createTheme({
   palette: {
