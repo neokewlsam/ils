@@ -15,8 +15,12 @@
     }
   ],
   "routes": [
-    { "src": "/api/(.*)", "dest": "server/server.js" },
-    { "src": "^/static/(.*)", "dest": "client/build/static/$1" },
-    { "src": ".*", "dest": "client/build/index.html" }
+    { "src": "/subjects", "dest": "/server/server.js" },
+    { "src": "/subtopics/(.*)", "dest": "/server/server.js" },
+    { "src": "/explain", "dest": "/server/server.js" },
+    { "src": "/question", "dest": "/server/server.js" },
+    { "src": "^/static/(.*)", "dest": "/client/build/static/$1" },
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/client/build/index.html" }
   ]
 }
